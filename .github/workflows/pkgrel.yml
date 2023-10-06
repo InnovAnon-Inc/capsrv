@@ -121,18 +121,6 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Release
-      uses: softprops/action-gh-release@v1
-      with:
-        tag_name: ${{ steps.tag_version.outputs.new_tag }}
-        fail_on_unmatched_files: true
-        generate_release_notes: true
-        files: |
-          Dockerfile
-          docker-compose.yaml
-          bin/*.sh
-      #  dist/*
-
     # TODO new image
     - name: Authenticate with Docker Hub
       run: |
@@ -158,22 +146,27 @@ jobs:
       run: |
         docker push      innovanon/capsrv
 
-    # Service containers to run with `container-job`
-    #services:
-    #  # Label used to access the service container
-    #  postgres:
-    #    # Docker Hub image
-    #    image: postgres
-    #    # Provide the password for postgres
-    #    env:
-    #      POSTGRES_PASSWORD: postgres
-    #    # Set health checks to wait until postgres has started
-    #    options: >-
-    #      --health-cmd pg_isready
-    #      --health-interval 10s
-    #      --health-timeout 5s
-    #      --health-retries 5
-    #    ports:
-    #      # Maps tcp port 5432 on service container to the host
-    #      - 5432:5432
+    # TODO new image
+    - name: Configure GPG Key
+      run: |
+        echo -n "$GPG_SIGNING_KEY" | gpg --import
+        #echo -n "$GPG_SIGNING_KEY" | base64 --decode | gpg --import
+      env:
+        GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
+
+    - name: Sign Installation Package
+      run: |
+        gpg --yes --detach-sig Dockerfile
+        gpg --yes --detach-sig docker-compose.yaml
+        find bin -mindepth 1 -exec gpg --yes --detach-sig '{}' \;
+    
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: ${{ steps.tag_version.outputs.new_tag }}
+        fail_on_unmatched_files: true
+        generate_release_notes: true
+        files: |
+          *
+          bin/*
 
