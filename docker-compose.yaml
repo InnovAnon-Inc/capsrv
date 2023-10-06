@@ -1,6 +1,6 @@
 version: '3.8'
 services:
-  cap-srv:
+  capsrv:
     #env_file: .env
     image: innovanon/capsrv
     container_name:  capsrv
