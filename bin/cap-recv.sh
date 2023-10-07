@@ -30,7 +30,7 @@ aircrack-ng.lst.sh "$cap" |
 tee "$lst"                |
 awk -v "C=$cap"           \
 $'{
-  cmd = "ln -v "C" caps/bssid/"$2".cap"
+  cmd = "[ -e caps/bssid/"$2".psk ] || ln -v "C" caps/bssid/"$2".cap"
   while ((cmd | getline output) > 0)
     print output;
   close(cmd)
