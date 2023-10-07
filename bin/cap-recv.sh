@@ -2,7 +2,7 @@
 set -euxo nounset -o pipefail
 
 if (( ! UID )) &&
-   (( ! ${DOCKER_TEAMHACK:-0} )) ; then
+   (( ! ${TEAMHACK_DOCKER:-0} )) ; then
 echo de-escalate privileges 1>&2
 exit 1
 fi
