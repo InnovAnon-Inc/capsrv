@@ -25,6 +25,7 @@ WORKDIR  /var/teamhack
 VOLUME ["/var/teamhack/caps"]
 ENV TEAMHACK_DOCKER=1
 RUN test -x /usr/bin/env
+RUN command -v ncat
 ENTRYPOINT [                                        \
   "/usr/bin/env",                                   \
   "ncat",                                           \
