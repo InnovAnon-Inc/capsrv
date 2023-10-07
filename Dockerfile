@@ -24,6 +24,7 @@ COPY ./bin/* /usr/local/bin/
 WORKDIR  /var/teamhack
 VOLUME ["/var/teamhack/caps"]
 ENV TEAMHACK_DOCKER=1
+RUN test -x /usr/bin/env
 ENTRYPOINT [                                        \
   "/usr/bin/env",                                   \
   "ncat",                                           \
