@@ -1,4 +1,5 @@
 # capsrv [![capsrv](https://github.com/InnovAnon-Inc/capsrv/actions/workflows/pkgrel.yml/badge.svg)](https://github.com/InnovAnon-Inc/capsrv/actions/workflows/pkgrel.yml)
+Simple NCat Server to Receive and Sort AiroDump-NG .cap Files
 ==========
 [![License Summary](https://img.shields.io/github/license/InnovAnon-Inc/capsrv?color=%23FF1100&label=Free%20Code%20for%20a%20Free%20World%21&logo=InnovAnon%2C%20Inc.&logoColor=%23FF1133&style=plastic)](https://tldrlegal.com/license/unlicense#summary)
 [![Latest Release](https://img.shields.io/github/commits-since/InnovAnon-Inc/capsrv/latest?color=%23FF1100&include_prereleases&logo=InnovAnon%2C%20Inc.&logoColor=%23FF1133&style=plastic)](https://github.com/InnovAnon-Inc/capsrv/releases/latest)

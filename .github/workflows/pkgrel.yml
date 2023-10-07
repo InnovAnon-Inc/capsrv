@@ -1,4 +1,4 @@
-name: Certificate Authority REST API
+name: Simple NCat Server to Receive and Sort AiroDump-NG .cap Files
 permissions:
   contents: write
 
