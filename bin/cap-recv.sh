@@ -19,7 +19,7 @@ exec 0<&-               # close stdin
 #exec 2>&1               # redirect stderr to stdout
 #renice -n -20 "$$"      # max prio
 
-cap="$(mktemp --suffix=.cap --tmpdir=caps/uploads)"
+cap="$(mktemp --suffix=.cap --tmpdir=caps/upload)"
 trap "rm -v $cap" 0
 cat > "$cap"
 
@@ -30,7 +30,7 @@ aircrack-ng.lst.sh "$cap" |
 tee "$lst"                |
 awk -v "C=$cap"           \
 $'{
-  cmd = "[ -e caps/bssid/"$2".psk ] || ln -v "C" caps/bssid/"$2".cap"
+  cmd = "[ -e psks/"$2".psk ] || ln -v "C" caps/bssid/"$2".cap"
   while ((cmd | getline output) > 0)
     print output;
   close(cmd)

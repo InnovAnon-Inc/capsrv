@@ -7,7 +7,8 @@ services:
     ports:
       - "0.0.0.0:43415:43415/tcp"
     volumes:
-      - aircaps:/var/teamhack/caps:ro
+      - aircaps:/var/teamhack/caps:rw
+      - airpsks:/var/teamhack/psks:ro
       #- syslog-client:/etc/rsyslog.d:ro
     #command: ["-w", "/var/teamhack/wordlists/$TEAMHACK_WORDLIST", "-b", $TEAMHACK_BSSID, "-l", "/var/teamhack/psks/$TEAMHACK_BSSID.psk", "/var/teamhack/caps/$TEAMHACK_BSSID.cap"]
     restart:         always
