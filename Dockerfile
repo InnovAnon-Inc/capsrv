@@ -28,8 +28,8 @@ ENTRYPOINT [                                        \
   "/usr/bin/env",                                   \
   "ncat",                                           \
   "-4",                                             \
-  "--port", "43415",                                \
-  "--exec", "cap-recv.sh",                          \
+  "--source-port", "43415",                         \
+  "--exec",        "cap-recv.sh",                   \
   "--listen",                                       \
   "--keep-open",                                    \
   "--nodns",                                        \

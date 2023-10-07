@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   #[workflow_call]
   schedule:
-    - cron: '* * */1 * *'
+    - cron: '* * * * */1'
     #- cron: '* * 1 * *'
     #- cron: '*/1 * * * *'
   push:
