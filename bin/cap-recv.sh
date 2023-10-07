@@ -15,7 +15,7 @@ EOF
 exit 1
 fi
 
-exec 0<&-               # close stdin
+#exec 0<&-               # close stdin
 #exec 2>&1               # redirect stderr to stdout
 #renice -n -20 "$$"      # max prio
 
